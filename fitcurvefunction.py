@@ -5,9 +5,9 @@ import matplotlib.pyplot as plt
 from numpy.typing import ArrayLike
 from typing import Callable, Final, Type, Any
 import numpy as np
-"""This is a basic chart plotter for any linear (for now) equation with the best fit curve \n
-and ploting the points the graphingfun() give the basic fit plot and the relivent fit equation \n
-with all the error and coefficent of determination. \n\n
+""" This is a basic chart plotter for any linear (for now) equation with the best fit curve \n
+and plotting the points. The graphingfun() gives the basic fit plot and the relevant fit equation \n
+with all the errors and the coefficient of determination. \n\n
 The 
 """
 
@@ -15,7 +15,7 @@ The
 SUB: Final[list] = str.maketrans("0123456789-", "₀₁₂₃₄₅₆₇₈₉₋")
 print (SUB)
 
-# Get the fit paramters (here, m and b) and covariance matrix from curve_fit
+# Get the fit parameters (here, m and b) and covariance matrix from curve_fit
 # make initial guess for fit parameters and assign to p0
 # Weight the dependent variable by sigmay, the array of standard uncertainties
 
@@ -27,7 +27,7 @@ def scatterplthfun(
     x: ArrayLike | None,
     y: ArrayLike | None,
     linestyle="-",
-    linewitdh = 1, 
+    linewidth = 1, 
     xname= "X-axis",
     yname="Y-axis",
     filename_prefix="Plot",
@@ -37,13 +37,12 @@ def scatterplthfun(
     """
     
     x and u are Arrays \n\n
-    all other parameter are optional and are related to the how graphs look \n\n
+    All other parameters are optional and are related to how graphs look \n\n
     and the last 3 parameters are about the filename and whether to save the graph or \n
     show it or both
     """
     plt.figure(figsize=(10, 6))
-    plt.plot(x, y, linestyle=linestyle, linewidth=linewitdh)
-    #plt.plot(arraytemp2, 100*pressdev2, linestyle='-', linewidth=1)
+    plt.plot(x, y, linestyle=linestyle, linewidth=linewidth)
     plt.xlabel(xname)
     plt.ylabel(yname)
     plt.title(f"{xname.translate(SUB)} vs {yname.translate(SUB)}" )
@@ -65,7 +64,7 @@ def graphingfun(
     x: ArrayLike | None,
     y: ArrayLike,
     parameters: ArrayLike, 
-    sigmaval = 0.0,  
+    sigmaval = [0.0],  
     xname= "X-axis",
     yname="Y-axis",
     filename_prefix="Plot",
@@ -89,19 +88,12 @@ def graphingfun(
     else:
         params = np.polyfit(x,y,1)
         covmat = np.cov(x,y)
-        print("hello")
-    # print (parameters)
 
 
-    # # Model's prediction for dependent variable
-    # # The * before params means that this is a list with an arbitrary number of
-    # # elements; Change Parameters to *prams if best fit equation is no found
-    # data = np.vstack((x, y))
-    # print (data)
-    # covmat = np.cov(data)
-    # print (covmat)
-    # params = np.polyfit(x, y, 1)
-    # print (params)
+
+    # Model's prediction for the dependent variable
+    # The * before params means that this is a list with an arbitrary number of
+    # elements; 
     fitequation = function(x, *params)
     
     def rifun():
@@ -136,7 +128,6 @@ def graphingfun(
         plt.text(0.35, 1.15, interc, transform=plt.gca().transAxes, verticalalignment="top", 
                 bbox=dict(facecolor="white", alpha = 0.5))
 
-        # #show(block=False)
 
 
         # Print the fit function equation, the uncertainties of the parameters,
@@ -195,4 +186,5 @@ def resScatterPlt(x, r, xname, rname, filename_prefix="Plot"):
     plt.savefig(f"{filename_prefix}.png")
     plt.close(sctrplt)
     
+
     
