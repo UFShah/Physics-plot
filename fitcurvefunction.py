@@ -23,7 +23,39 @@ def sstotal(y: ArrayLike | None) -> ArrayLike:
     return sum((float(y) - y.mean)**2)
 
 
-
+def scatterplthfun(
+    x: ArrayLike | None,
+    y: ArrayLike | None,
+    linestyle="-",
+    linewitdh = 1, 
+    xname= "X-axis",
+    yname="Y-axis",
+    filename_prefix="Plot",
+    show_bool = "False",
+    save_bool = "True"):
+    
+    """
+    
+    x and u are Arrays \n\n
+    all other parameter are optional and are related to the how graphs look \n\n
+    and the last 3 parameters are about the filename and whether to save the graph or \n
+    show it or both
+    """
+    plt.figure(figsize=(10, 6))
+    plt.plot(x, y, linestyle=linestyle, linewidth=linewitdh)
+    #plt.plot(arraytemp2, 100*pressdev2, linestyle='-', linewidth=1)
+    plt.xlabel(xname)
+    plt.ylabel(yname)
+    plt.title(f"{xname.translate(SUB)} vs {yname.translate(SUB)}" )
+    plt.grid(True)
+    if show_bool =="True" and save_bool == "True":
+            plt.savefig(f"{filename_prefix}.png")
+            plt.show()    
+    elif show_bool == "True" and save_bool == "False":
+        plt.show()
+    elif show_bool == "False" and save_bool == "True":
+        plt.savefig(f"{filename_prefix}.png")
+        
 
     
     
@@ -55,7 +87,9 @@ def graphingfun(
     if float(sigmaval[0]) != 0:
         (params, covmat) = curve_fit(function, x, y, parameters, sigma=sigmaval, absolute_sigma=True)
     else:
-        (params, covmat) = curve_fit(function, x, y, parameters)
+        params = np.polyfit(x,y,1)
+        covmat = np.cov(x,y)
+        print("hello")
     # print (parameters)
 
 
