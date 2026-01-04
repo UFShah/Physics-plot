@@ -1,3 +1,6 @@
+icon thanks to Freepik
+https://www.flaticon.com/free-icon/atom_5137282?term=physics&page=1&position=46&origin=tag&related_id=5137282
+
 ------------------------------------------------------ App Version 0.35 ------------------------------------------------------ 
 
 
