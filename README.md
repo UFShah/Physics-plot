@@ -1,4 +1,4 @@
------------------------------------------------------------------- App Version 0.35 ----------------------------------------------------------------- 
+------------------------------------------------------ App Version 0.35 ------------------------------------------------------ 
 
 
 Hello, this is my first app and I only used Python for this app.
@@ -14,7 +14,7 @@ Also, the code is not very professional, and for the frontend end of the app, I 
 to break the code into smaller chunks, but I will be working on this app
 
 
----------------------------------------------------------------------Next Versions ------------------------------------------------------------------
+--------------------------------------------------------Next Versions --------------------------------------------------------
 
 In the near future, no big feature would be added; only the base code and how the logic of the code will be improved, and any bugs that would appear
 
@@ -29,4 +29,4 @@ These would be the goals for the near future, and in the long term, I want this 
 I also want to make this app model a Histogram to see if they follow gaussian (normal) distribution, or any other kind
 
 
------------------------------------------------------------------------ End-------------------------------------------------------------------------- 
+------------------------------------------------------------ End--------------------------------------------------------------
